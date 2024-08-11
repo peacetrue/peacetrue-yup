@@ -1,3 +1,3 @@
-import {addUniqueMethod} from './unique';
+import { addUniqueMethod } from './unique';
 
 addUniqueMethod();

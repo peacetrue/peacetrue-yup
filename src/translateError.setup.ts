@@ -1,3 +1,3 @@
-import {addTranslateErrorHandler,} from './translateError';
+import { addTranslateErrorHandler } from './translateError';
 
 addTranslateErrorHandler();

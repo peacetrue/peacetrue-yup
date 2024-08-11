@@ -1,5 +1,3 @@
-import './setup';
-import './methods/setup';
 export * from './locales';
 export * from './methods';
 export * from './globalLocaleMessages';

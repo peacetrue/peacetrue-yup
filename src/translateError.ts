@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
-import {ValidationError} from 'yup';
-import {getLocaleMessage} from './globalLocaleMessages';
-import {addGlobalErrorHandlers} from "./globalErrorHandlers";
+import { ValidationError } from 'yup';
+import { getLocaleMessage } from './globalLocaleMessages';
+import { addGlobalErrorHandlers } from './globalErrorHandlers';
 
 type Translate<
   M extends string = string,

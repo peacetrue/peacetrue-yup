@@ -1,5 +1,12 @@
-import {addMethod, array, defaultLocale, Flags, Message, TestContext} from 'yup';
-import _ from "lodash";
+import {
+  addMethod,
+  array,
+  defaultLocale,
+  Flags,
+  Message,
+  TestContext,
+} from 'yup';
+import _ from 'lodash';
 // https://github.com/jquense/yup?tab=readme-ov-file#extending-built-in-schema-with-new-methods
 // https://github.com/jquense/yup/issues/345
 declare module 'yup' {
@@ -40,12 +47,12 @@ function rawValue(key: string, _record: Record<string, number[]>) {
 }
 
 export function addUniqueMethod() {
-  addMethod(array, 'unique', function (props: UniqueProps = {}) {
+  addMethod(array, 'unique', function(props: UniqueProps = {}) {
     return this.test({
       name: 'unique',
       // @ts-ignore
       message: props.message || defaultLocale.array.unique,
-      params: {itemLabel: 'value', rawValue: ''} as UniqueExtra,
+      params: { itemLabel: 'value', rawValue: '' } as UniqueExtra,
       test(value: any[] | undefined, context: TestContext) {
         if (!value || value.length <= 1) return true;
         // arraySchema, itemSchema, fieldSchema
@@ -61,13 +68,13 @@ export function addUniqueMethod() {
           return (
             value.length === new Set(value).size ||
             context.createError({
-              params: {itemLabel},
+              params: { itemLabel },
             })
           );
         }
 
         const grouped = _.chain(value)
-          .map((item, index) => ({value: item, index}))
+          .map((item, index) => ({ value: item, index }))
           .groupBy('value')
           // @ts-ignore: 'pickBy' does not exist on type 'ObjectChain<Dictionary<{ value: any; index: number; }[]>>'
           .pickBy((value, _key) => value.length > 1)

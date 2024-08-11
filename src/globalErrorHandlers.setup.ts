@@ -1,3 +1,3 @@
-import {addGlobalErrorHandler} from './globalErrorHandlers';
+import { addGlobalErrorHandler } from './globalErrorHandlers';
 
 addGlobalErrorHandler();

@@ -1,4 +1,11 @@
-import {addMethod, defaultLocale, Flags, Message, Schema, TestContext} from 'yup';
+import {
+  addMethod,
+  defaultLocale,
+  Flags,
+  Message,
+  Schema,
+  TestContext,
+} from 'yup';
 // https://github.com/jquense/yup?tab=readme-ov-file#extending-built-in-schema-with-new-methods
 declare module 'yup' {
   interface Schema<
@@ -31,7 +38,7 @@ export type RefProps = {
 
 export function addRefMethod() {
   // @ts-ignore: Type 'typeof Schema' provides no match for the signature '(...arg: any[]): any'.
-  addMethod<any>(Schema, 'ref', function (props: RefProps) {
+  addMethod<any>(Schema, 'ref', function(props: RefProps) {
     return this.test({
       name: 'ref',
       // @ts-ignore
@@ -55,8 +62,8 @@ export function addRefMethod() {
         const isArray = Array.isArray(value);
         if (
           // @ts-ignore: Parameter 'item' implicitly has an 'any' type.
-          (isArray && value.every(item => refValues.includes(item)))
-          || (!isArray && refValues.includes(value))
+          (isArray && value.every(item => refValues.includes(item))) ||
+          (!isArray && refValues.includes(value))
         ) {
           return true;
         }

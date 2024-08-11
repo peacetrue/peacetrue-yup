@@ -1,5 +1,5 @@
-import {AnySchema, ValidationError} from 'yup';
-import {addGlobalErrorHandlers} from "./globalErrorHandlers";
+import { AnySchema, ValidationError } from 'yup';
+import { addGlobalErrorHandlers } from './globalErrorHandlers';
 
 // concat -> prepend
 
@@ -36,9 +36,9 @@ function resolvePath(path: string): PathSegment[] {
   let match;
   while ((match = regex.exec(path)) !== null) {
     if (match[1]) {
-      segments.push({value: match[1], type: 'prop'});
+      segments.push({ value: match[1], type: 'prop' });
     } else if (match[2]) {
-      segments.push({value: Number(match[2]), type: 'index'});
+      segments.push({ value: Number(match[2]), type: 'index' });
     }
   }
 

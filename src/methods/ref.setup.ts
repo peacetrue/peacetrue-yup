@@ -1,3 +1,3 @@
-import {addRefMethod} from './ref';
+import { addRefMethod } from './ref';
 
 addRefMethod();
