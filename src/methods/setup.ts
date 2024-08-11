@@ -1,2 +1,2 @@
-import "./unique.setup"
-import "./ref.setup"
+import './unique.setup';
+import './ref.setup';

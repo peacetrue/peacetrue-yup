@@ -1,12 +1,13 @@
-import {LocaleObject} from "yup";
+import { LocaleObject } from 'yup';
 
+// @ts-ignore
 export const peaceMetaMessages: LocaleObject = {
   mixed: {
     // @ts-ignore
-    ref: "mixed.ref",
+    ref: 'mixed.ref',
   },
   array: {
     // @ts-ignore
-    unique: "array.unique",
-  }
+    unique: 'array.unique',
+  },
 };

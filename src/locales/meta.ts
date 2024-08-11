@@ -24,9 +24,9 @@ export const metaMessages: DeepRequired<Yup.LocaleObject> = {
     trim: 'string.trim',
     lowercase: 'string.lowercase',
     uppercase: 'string.uppercase',
-    datetime: "string.datetime",
-    datetime_offset: "string.datetime_offset",
-    datetime_precision: "string.datetime_precision",
+    datetime: 'string.datetime',
+    datetime_offset: 'string.datetime_offset',
+    datetime_precision: 'string.datetime_precision',
   },
   number: {
     min: 'number.min',
@@ -53,12 +53,14 @@ export const metaMessages: DeepRequired<Yup.LocaleObject> = {
     length: 'array.length',
   },
   tuple: {
-    notType: "tuple.notType",
-  }
+    notType: 'tuple.notType',
+  },
 };
 
-export const PROP_META = "meta";
-export const yupMetaLocaleMessages: Record<string, Required<Yup.LocaleObject>> = {
+export const PROP_META = 'meta';
+export const yupMetaLocaleMessages: Record<
+  string,
+  Required<Yup.LocaleObject>
+> = {
   [PROP_META]: metaMessages,
-}
-
+};

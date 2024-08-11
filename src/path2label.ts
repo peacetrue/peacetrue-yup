@@ -1,14 +1,7 @@
-import {AnySchema, SchemaDescription, ValidationError} from "yup";
+import {AnySchema, ValidationError} from 'yup';
+import {addGlobalErrorHandlers} from "./globalErrorHandlers";
 
 // concat -> prepend
-
-/** key 为属性名，同时设置到属性中 */
-export function formatFields(props: Record<string, SchemaDescription & {
-  name?: string
-}>) {
-  Object.keys(props).forEach(item => props[item].name = item);
-  return props;
-}
 
 // 将 message 中嵌套的 path 转换为 label，例如：persons[0].name -> 人物 0 的名称
 export function labelMessages(error: ValidationError, schema: AnySchema) {
@@ -59,18 +52,27 @@ function resolvePath(path: string): PathSegment[] {
  * @param indexRowDiff 索引和行号的间隔
  * @return {string}
  */
-function getLabel(segments: PathSegment[], schema: AnySchema, indexRowDiff: number = 2): string {
+function getLabel(
+  segments: PathSegment[],
+  schema: AnySchema,
+  indexRowDiff: number = 2
+): string {
   let currentSchema: any = schema;
-  return segments.map(segment => {
-    if (typeof segment.value === 'string') {
-      currentSchema = currentSchema.fields[segment.value];
-      return currentSchema?.describe()?.label || segment.value;
-    } else {
-      if (currentSchema.innerType) {
-        currentSchema = currentSchema.innerType;
+  return segments
+    .map(segment => {
+      if (typeof segment.value === 'string') {
+        currentSchema = currentSchema.fields[segment.value];
+        return currentSchema?.describe()?.label || segment.value;
+      } else {
+        if (currentSchema.innerType) {
+          currentSchema = currentSchema.innerType;
+        }
+        return `[${segment.value + indexRowDiff}]`;
       }
-      return `[${segment.value + indexRowDiff}]`;
-    }
-  }).join("");
+    })
+    .join('');
 }
 
+export function addNestedLabelErrorHandler() {
+  addGlobalErrorHandlers(labelMessages);
+}

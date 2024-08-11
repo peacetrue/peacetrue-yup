@@ -1,6 +1,3 @@
-import {addGlobalErrorHandlers} from "./globalErrorHandlers";
-import {buildFormatErrorTranslate, getTranslateLocale, translateError} from "./translateError";
+import {addTranslateErrorHandler,} from './translateError';
 
-addGlobalErrorHandlers(error =>
-  translateError(error, buildFormatErrorTranslate(getTranslateLocale()))
-);
+addTranslateErrorHandler();

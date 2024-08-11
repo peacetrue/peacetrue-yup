@@ -1,4 +1,3 @@
-import {proxyValidate} from "./proxyValidate";
-import {defaultGlobalErrorHandler} from "./globalErrorHandlers";
+import {addGlobalErrorHandler} from './globalErrorHandlers';
 
-proxyValidate(defaultGlobalErrorHandler);
+addGlobalErrorHandler();
